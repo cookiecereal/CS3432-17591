@@ -5,7 +5,7 @@
 int countLengthWord(char *str, char delim){
   int wordLength = 0;
   char* pStr = str; 
-  for(*pStr; *pStr != delim && *pStr != '\0'; pStr++)//looks throught the the word one by one till it reaches the end
+  for( ;*pStr != delim && *pStr != '\0'; pStr++)//looks throught the the word one by one till it reaches the end
   {
     wordLength++; //adds to the number of words 
   }
@@ -65,8 +65,9 @@ char ** mytoc(char *str, char delim){
     else      //there is no word there
       pStr++;
   }
-  vector[numWords] = '\0';
+  vector[numWords] = 0;
   return vector;
 }
+
 
 
