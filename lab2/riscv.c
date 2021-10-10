@@ -11,6 +11,7 @@ int32_t* reg; // Array of 32 32-bit registers
 int lines=0;
 
 void init_regs();
+void print_regs();
 bool interpret(char* instr);
 void write_read_demo();
 
@@ -244,8 +245,12 @@ bool interpret(char* instr){
  * Feel free to change "data_to_write" and "address" variables to see how these affect mem.txt
  * Use 0x before an int in C to hardcode it as text, but you may enter base 10 as you see fit.
  */
-void write_read_demo(int32_t data_to_write, int32_t address, char* mem_file){
+void write_read_demo(){
 	// Write 4095 (or "0000000 00000FFF") in the 20th address (address 152 == 0x98)
+  int32_t data_to_write = 0xFFF;
+  int32_t address = 0x98;
+  char* mem_file = "mem.txt";
+
 	int32_t write = write_address(data_to_write, address, mem_file);
 	if(write == (int32_t) NULL)
 		printf("ERROR: Unsucessful write to address %0X\n", 0x40);
@@ -261,51 +266,51 @@ void write_read_demo(int32_t data_to_write, int32_t address, char* mem_file){
 int main(){
 	// Do not write any code between init_regs
 	init_regs(); // DO NOT REMOVE THIS LINE
+ print_regs();
+// printf("_______________________________");
+// printf("it takes spaces no commas");
+// printf("_______________________________");
 
-printf("_______________________________");
-printf("it takes spaces no commas");
-printf("_______________________________");
-
-char user_input [INPUT_LIM];
-init_regs();//do not reomove
-while(1){
-  printf("Enter an isntruction or use cntr-D to exit");
-  printf("$ ");
-  fgets(user_input,INPUT_LIM,stdin); //get user input
-  char *str = user_input;
-      if (str[0] == '#'){ //FOR NOW EOF = /n
-      break;
-    }
-     bool correctlyExec =  interpret(str); //calls interpret function from riscv.c file
-    if (correctlyExec == 0){ //if not executed correctly
-      printf("---> Sorry. This was not executed correctly.\n");
-    }
-}
-  printf("------------------------\n");
-  printf("-- Printing registers: -- \n");
-  printf("------------------------\n");
-  print_regs();
-  printf("\n");
-  return 0;
+// char user_input [INPUT_LIM];
+// init_regs();//do not reomove
+// while(1){
+//   printf("Enter an isntruction or use cntr-D to exit");
+//   printf("$ ");
+//   fgets(user_input,INPUT_LIM,stdin); //get user input
+//   char *str = user_input;
+//       if (str[0] == '#'){ //FOR NOW EOF = /n
+//       break;
+//     }
+//      bool correctlyExec =  interpret(str); //calls interpret function from riscv.c file
+//     if (correctlyExec == 0){ //if not executed correctly
+//       printf("---> Sorry. This was not executed correctly.\n");
+//     }
+// }
+//   printf("------------------------\n");
+//   printf("-- Printing registers: -- \n");
+//   printf("------------------------\n");
+//   print_regs();
+//   printf("\n");
+//   return 0;
 
 	// Below is a sample program to a write-read. Overwrite this with your own code.
-	//write_read_demo();
-	// printf(" RV32 Interpreter.\nType RV32 instructions. Use upper-case letters and space as a delimiter.\nEnter 'EOF' character to end program\n");
+	// write_read_demo();
+	 printf(" RV32 Interpreter.\nType RV32 instructions. Use upper-case letters and space as a delimiter.\nEnter 'EOF' character to end program\n");
 
-	// char* instruction = malloc(1000 * sizeof(char));
-	// bool is_null = false;
-	// // fgets() returns null if EOF is reached.
-	// is_null = fgets(instruction, 1000, stdin) == NULL;
-	// while(!is_null){
-	// 	interpret(instruction);
-	// 	printf("\n");
-	// 	print_regs();
-	// 	printf("\n");
+	char* instruction = malloc(1000 * sizeof(char));
+	bool is_null = false;
+	// fgets() returns null if EOF is reached.
+	is_null = fgets(instruction, 1000, stdin) == NULL;
+	while(!is_null){
+		interpret(instruction);
+		printf("\n");
+		print_regs();
+		printf("\n");
 
-	// 	is_null = fgets(instruction, 1000, stdin) == NULL;
-	// }
+		is_null = fgets(instruction, 1000, stdin) == NULL;
+	}
 
-	// printf("Good bye!\n");
+	printf("Good bye!\n");
 
-	// return 0;
+	return 0;
 }
