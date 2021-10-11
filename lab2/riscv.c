@@ -252,11 +252,11 @@ void write_read_demo(){
   char* mem_file = "mem.txt";
 
 	int32_t write = write_address(data_to_write, address, mem_file);
-	if(write == (int32_t) NULL)
-		printf("ERROR: Unsucessful write to address %0X\n", 0x40);
+//	if(write == (int32_t) NULL)
+//		printf("ERROR: Unsucessful write to address %0X\n", 0x40);
 	int32_t read = read_address(address, mem_file);
 
-	printf("Read address %lu (0x%lX): %lu (0x%lX)\n", address, address, read, read); // %lu -> format as an long-unsigned
+//	printf("Read address %lu (0x%lX): %lu (0x%lX)\n", address, address, read, read); // %lu -> format as an long-unsigned
 }
 
 /**

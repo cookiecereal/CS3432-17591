@@ -31,7 +31,7 @@ char *word_start(char *str){
   for (i = 0; space_char(temp[i]);i++) //skips over any space before the start of a word
     ;
   
-  if ((temp+i) == '\0'){ //if it reaches end without a char then it returns a NULL pointer
+  if ((temp+i) == "\0"){ //if it reaches end without a char then it returns a NULL pointer
     temp = NULL;
     return temp;
   }

@@ -1,4 +1,4 @@
-CC=gcc
+ CC=gcc
 CFLAGS=-c -Wall
 USE_TOKENIZER=true# <-- true if using a custom tokenizer, false otherwise
 CUSTOM_TOKENIZER=tokenizer# <-- put your tokenizer.c file name without the file extension
